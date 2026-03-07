@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import jesterImg from '../assets/jester-logo.svg';
 import './Chatbot.css';
 
+
 const BotpressChat = () => {
   const [ready, setReady] = useState(false);
 
@@ -47,9 +48,16 @@ const BotpressChat = () => {
 
     const bp = window.botpress || window.botpressWebChat;
     if (bp) {
-      // Use open/close to stay in sync with our CSS class
-      if (isOpen && typeof bp.open === 'function') {
-        bp.open();
+      if (isOpen) {
+        // Start a fresh conversation every time the chat opens
+        if (typeof bp.newConversation === 'function') {
+          bp.newConversation();
+        } else if (typeof bp.resetConversation === 'function') {
+          bp.resetConversation();
+        }
+        if (typeof bp.open === 'function') {
+          bp.open();
+        }
       } else if (!isOpen && typeof bp.close === 'function') {
         bp.close();
       } else if (typeof bp.toggle === 'function') {

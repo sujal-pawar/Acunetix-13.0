@@ -116,7 +116,7 @@ function Reel() {
       `}</style>
       <FloatingCards />
       <div className="relative z-10  max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl py-4 font-bold text-center mb-8" style={{ color: "#00ffc8" }}>
+        <h2 className="text-4xl md:text-6xl py-4 font-black uppercase italic text-center mb-8 text-[#00ffc8] drop-shadow-[0_0_15px_rgba(0,255,200,0.5)]">
           Carrying the Legacy
         </h2>
 
