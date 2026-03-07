@@ -125,7 +125,17 @@ const EventDetails = () => {
     }, [navigate]);
 
     useEffect(() => {
+        // Force scroll top immediately and after a micro-delay
+        // to handle AnimatePresence timing
         window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        const t = setTimeout(() => {
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+        }, 50);
+        return () => clearTimeout(t);
     }, [eventName]);
 
     if (!event) {
@@ -467,8 +477,12 @@ const EventDetails = () => {
 
             {/* Bottom marquee */}
             <MarqueeStrip words={theme.marqueeWords} color={theme.primary} />
-            <Footer scrollToRefs={{ heroRef: true }} scrollToSection={() => navigate('/')} />
+            {/* Footer — solid background, no particle/glow bleed-through */}
+            <div className="relative z-[50] bg-black">
+                <Footer scrollToRefs={{ heroRef: true }} scrollToSection={() => navigate('/')} />
+            </div>
         </motion.div>
+
     );
 };
 

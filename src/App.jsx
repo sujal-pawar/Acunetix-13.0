@@ -1,7 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import './App.css'
+
+/* ── Force scroll to top — used on route change + after exit animation ── */
+function forceScrollTop() {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useLayoutEffect(() => {
+    forceScrollTop();
+  }, [pathname]);
+  return null;
+}
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -68,8 +83,9 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <AnimatePresence mode="wait">
+    <div className="min-h-screen flex flex-col bg-black">
+      <ScrollToTop />
+      <AnimatePresence mode="wait" onExitComplete={forceScrollTop}>
         <Routes location={location} key={location.pathname}>
           <Route
             path="/"
