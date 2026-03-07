@@ -10,8 +10,9 @@ import Schedule from './components/Schedule'
 import Sponsors from './components/Sponsors'
 import Reel from './components/Reel'
 import Footer from './components/Footer'
-import Chatbot from './components/Chatbot'
-import SchedulePage from './components/SchedulePage'
+import SchedulePageNew_1 from './pages/SchedulePageNew_1'
+import SchedulePageNew_2 from './pages/SchedulePageNew_2'
+import SchedulePageNew_3 from './pages/SchedulePageNew_3'
 import EventDetails from './components/EventDetails'
 
 function HomePage({ scrollToRefs, scrollToSection, isScrolled }) {
@@ -69,24 +70,23 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <div className="min-h-screen flex flex-col">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                scrollToRefs={scrollToRefs}
-                scrollToSection={scrollToSection}
-                isScrolled={isScrolled}
-              />
-            }
-          />
-          <Route path="/schedule" element={<SchedulePage />} />
-        </Routes>
-        <Chatbot />
+    <div className="min-h-screen flex flex-col">
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              scrollToRefs={scrollToRefs}
+              scrollToSection={scrollToSection}
+              isScrolled={isScrolled}
+            />
+          }
+        />
+        <Route path="/schedule/1" element={<SchedulePageNew_1 />} />
+        <Route path="/schedule/2" element={<SchedulePageNew_2 />} />
+        <Route path="/schedule/3" element={<SchedulePageNew_3 />} />
+      </Routes>
     </div>
-    </BrowserRouter>
   )
 }
 

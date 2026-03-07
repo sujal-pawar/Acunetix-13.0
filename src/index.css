@@ -519,6 +519,7 @@ footer {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 1rem;
+  color: #ffffff;
 }
 
 .schedule-placeholder {
@@ -710,12 +711,25 @@ footer {
 }
 
 .schedule-title {
-  font-size: clamp(2rem, 5vh, 4rem);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: clamp(4rem, 5vh, 4rem);
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 0;
   flex-shrink: 0;
+  color: #ffffff;
+}
+
+.schedule-subtitle {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: clamp(1rem, 2.5vh, 1.4rem);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  /* color: rgba(0, 255, 200, 0.7); */
+  transition: color 0.2s ease;
+  margin-top: 1rem;
 }
 
 .schedule-cards-container {
