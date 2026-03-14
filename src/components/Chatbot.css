@@ -1,0 +1,85 @@
+/* Intentionally left minimal: use default Botpress launcher/avatar and layout
+   from Botpress dashboard settings to avoid page-scroll/touch conflicts. */
+
+@media (max-width: 768px) {
+   .bpChatContainer,
+   #bp-web-widget-container,
+   #bp-web-widget,
+   [class*="WebchatContainer"],
+   [class*="webchatContainer"] {
+      position: fixed !important;
+      inset: auto 12px 78px auto !important;
+      width: 64vw !important;
+      max-width: 240px !important;
+      min-width: 0 !important;
+      height: 38vh !important;
+      max-height: 320px !important;
+      min-height: 0 !important;
+      border-radius: 14px !important;
+      overflow: hidden !important;
+      z-index: 2147483000 !important;
+   }
+
+   .bpChatContainer > div,
+   #bp-web-widget-container > div,
+   #bp-web-widget > div,
+   [class*="WebchatContainer"] > div,
+   [class*="webchatContainer"] > div {
+      width: 64vw !important;
+      max-width: 240px !important;
+      height: 38vh !important;
+      max-height: 320px !important;
+      min-height: 0 !important;
+      border-radius: 14px !important;
+      overflow: hidden !important;
+   }
+
+   .bpChatContainer iframe,
+   #bp-web-widget-container iframe,
+   #bp-web-widget iframe,
+   [class*="WebchatContainer"] iframe,
+   [class*="webchatContainer"] iframe {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 320px !important;
+      min-height: 0 !important;
+      border-radius: 14px !important;
+   }
+}
+
+/* Smartphone-only: make chat window noticeably smaller */
+@media (max-width: 480px) {
+   .bpChatContainer,
+   #bp-web-widget-container,
+   #bp-web-widget,
+   [class*="WebchatContainer"],
+   [class*="webchatContainer"] {
+      inset: auto 10px 74px auto !important;
+      width: 56vw !important;
+      max-width: 210px !important;
+      height: 32vh !important;
+      max-height: 260px !important;
+      border-radius: 12px !important;
+   }
+
+   .bpChatContainer > div,
+   #bp-web-widget-container > div,
+   #bp-web-widget > div,
+   [class*="WebchatContainer"] > div,
+   [class*="webchatContainer"] > div {
+      width: 56vw !important;
+      max-width: 210px !important;
+      height: 32vh !important;
+      max-height: 260px !important;
+      border-radius: 12px !important;
+   }
+
+   .bpChatContainer iframe,
+   #bp-web-widget-container iframe,
+   #bp-web-widget iframe,
+   [class*="WebchatContainer"] iframe,
+   [class*="webchatContainer"] iframe {
+      max-height: 260px !important;
+      border-radius: 12px !important;
+   }
+}
