@@ -115,9 +115,13 @@ function Reel() {
         }
       `}</style>
       <FloatingCards />
-      <div className="relative z-10  max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-6xl py-4 font-black uppercase italic text-center mb-8 text-[#00ffc8] drop-shadow-[0_0_15px_rgba(0,255,200,0.5)]">
-          Carrying the Legacy
+      <div className="relative z-10  max-w-7xl mx-auto px-4">
+        <h2
+          className="font-black uppercase tracking-wider text-center whitespace-nowrap"
+          style={{ fontFamily: "'VerminVibes', 'Orbitron', sans-serif", fontSize: 'clamp(1.4rem, 5.5vw, 4rem)' }}
+        >
+          <span className="text-white">Carrying our Legacy </span>
+          
         </h2>
 
         <div className="flex overflow-x-auto pb-4 scrollbar-hide md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible">

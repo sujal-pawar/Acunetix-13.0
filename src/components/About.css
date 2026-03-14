@@ -3,7 +3,7 @@
 
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 800px;
   background: #000;
   overflow: hidden;
 }
@@ -44,12 +44,12 @@
 
 /* ── Title ── */
 .about-title {
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: 5rem;
+  font-weight: 900;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #ffffff;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   position: relative;
  
   text-shadow:
@@ -73,11 +73,22 @@
 
 /* ── Paragraph ── */
 .about-paragraph {
-  max-width: 680px;
-  font-size: 1.1rem;
-  line-height: 1.85;
+  max-width: 900px;
+  font-size: 1.5rem;
+  line-height: 1.9;
   color: rgba(255, 255, 255, 0.82);
   animation: aboutFadeUp 0.9s 0.3s ease-out both;
+}
+
+/* ── Mobile responsive ── */
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 3rem;
+  }
+  .about-paragraph {
+    font-size: 1.15rem;
+    max-width: 95%;
+  }
 }
 
 /* ── Keyframes ── */

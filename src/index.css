@@ -400,7 +400,6 @@ footer {
 }
 
 .events-heading {
-  font-size: clamp(2rem, 6vw, 4rem);
   font-weight: 800;
   color: #fff;
   margin-bottom: 4rem;
