@@ -51,10 +51,6 @@
   color: #ffffff;
   margin-bottom: 2rem;
   position: relative;
- 
-  text-shadow:
-    0 0 20px rgba(255, 159, 252, 0.35),
-    0 0 60px rgba(255, 159, 252, 0.15);
   animation: aboutFadeUp 0.9s ease-out both;
 }
 

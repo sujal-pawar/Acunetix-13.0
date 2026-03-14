@@ -120,6 +120,7 @@ function App() {
         <Route path="/schedule/1" element={<SchedulePageNew_1 />} />
         <Route path="/schedule/2" element={<SchedulePageNew_2 />} />
         <Route path="/schedule/3" element={<SchedulePageNew_3 />} />
+        <Route path="/events/:eventName" element={<EventDetails />} />
       </Routes>
       <Chatbot />
     </div>

@@ -76,7 +76,7 @@ const ParticleCanvas = ({ color }) => {
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 pointer-events-none z-1"
+            className="fixed inset-0 pointer-events-none z-[1]"
         />
     );
 };
@@ -117,8 +117,16 @@ const EventDetails = () => {
     const event = eventsData.find((e) => e.id === eventName);
 
     const handleBack = useCallback(() => {
-        navigate('/', { state: { scrollToEvents: true } });
+        navigate('/');
+        setTimeout(() => {
+            const el = document.getElementById('events');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
     }, [navigate]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [eventName]);
 
     if (!event) {
         return (
@@ -203,7 +211,7 @@ const EventDetails = () => {
             </div>
 
             {/* Page content */}
-            <div className="relative z-10 grow pt-24 pb-12">
+            <div className="relative z-10 flex-grow pt-24 pb-12">
                 {/* Back button */}
                 <motion.div
                     className="pt-6 md:pt-8 px-6 md:px-12 lg:px-20"
@@ -273,6 +281,7 @@ const EventDetails = () => {
                             <h1
                                 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase leading-none mb-4"
                                 style={{
+                                    fontFamily: "'VerminVibes', 'Orbitron', monospace",
                                     color: '#fff',
                                     textShadow: `0 0 60px ${theme.primary}40, 0 0 120px ${theme.primary}20`,
                                 }}
@@ -426,7 +435,7 @@ const EventDetails = () => {
 
                 {/* Event meta info */}
                 <motion.div
-                    className="px-6 md:px-12 lg:px-20 mt-12 max-w-350 mx-auto"
+                    className="px-6 md:px-12 lg:px-20 mt-12 max-w-[1400px] mx-auto"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 1.1 }}
@@ -458,12 +467,8 @@ const EventDetails = () => {
 
             {/* Bottom marquee */}
             <MarqueeStrip words={theme.marqueeWords} color={theme.primary} />
-            {/* Footer — solid background, no particle/glow bleed-through */}
-            <div className="relative z-[50] bg-black">
-                <Footer scrollToRefs={{ heroRef: true }} scrollToSection={() => navigate('/')} />
-            </div>
+            <Footer scrollToRefs={{ heroRef: true }} scrollToSection={() => navigate('/')} />
         </motion.div>
-
     );
 };
 
