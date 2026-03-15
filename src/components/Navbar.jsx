@@ -10,7 +10,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
 
   const handleLinkClick = (ref) => {
     setIsMenuOpen(false);
-    if (location.pathname !== '/') {
+    if (location.patGhname !== '/') {
       navigate('/');
       return;
     }
@@ -21,7 +21,13 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
 
   const handleScheduleClick = () => {
     setIsMenuOpen(false);
-    navigate('/schedule');
+    if (location.pathname !== '/') {
+      navigate('/');
+      return;
+    }
+    if (scrollToRefs.scheduleRef) {
+      setTimeout(() => scrollToSection(scrollToRefs.scheduleRef), 300);
+    }
   };
 
   return (
@@ -75,7 +81,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
         {/* Right as - Desktop */}
         <div className="hidden md:flex space-x-12 gap-16">
           <a
-            href="/schedule"
+            href="#schedule"
             onClick={(e) => {
               e.preventDefault();
               handleScheduleClick();
@@ -167,7 +173,7 @@ const Navbar = ({ scrollToRefs, scrollToSection, isScrolled }) => {
                 Events
               </a>
               <a
-                href="/schedule"
+                href="#schedule"
                 onClick={(e) => {
                   e.preventDefault();
                   handleScheduleClick();

@@ -26,8 +26,8 @@ const About = forwardRef((props, ref) => {
 
       {/* Centered text content */}
       <div className="about-content">
-        <h2 className="about-title text-6xl font-bold text-white">About Us</h2>
-        <p className="about-paragraph">
+        <h2 className="about-title text-8xl  md:text-8xl lg:text-9xl font-black uppercase tracking-wider text-white">About Us</h2>
+        <p className="about-paragraph font-bold text-5xl">
           Acunetix 12.0 is a flagship event organised by ACES and CSI, offering
           a range of Tech &amp; Non-Tech events. Participants take part in
           diverse competitions, showcasing their skills and earning recognition.
