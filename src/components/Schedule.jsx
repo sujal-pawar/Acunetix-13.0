@@ -1,18 +1,23 @@
 import React, { forwardRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CometCard } from './comet-card';
+import day1Svg from '../assets/cards/day-1.svg';
+import day2Svg from '../assets/cards/day-2.svg';
+import day3Svg from '../assets/cards/day-3.svg';
 
 const events = [
-    { id: 1, title: 'Day 1', subtitle: 'Opening Ceremony' },
-    { id: 2, title: 'Day 2', subtitle: 'Main Events' },
-    { id: 3, title: 'Day 3', subtitle: 'Grand Finale' },
+    { id: 1, title: 'Day 1', subtitle: 'Opening Ceremony', image: day1Svg },
+    { id: 2, title: 'Day 2', subtitle: 'Main Events', image: day2Svg },
+    { id: 3, title: 'Day 3', subtitle: 'Grand Finale', image: day3Svg },
 ];
 
 const Schedule = forwardRef((props, ref) => {
     const navigate = useNavigate();
 
     return (
-        <section ref={ref} id="events" className="events-section">
+        <section ref={ref} id="events" className="events-section"
+        style={{ background: "radial-gradient(ellipse at center, rgba(0,255,200,0.18) 0%, rgba(0,255,200,0.06) 70%, #000 80%)" }}
+        >
             <h2 className="events-heading text-2xl md:text-7xl lg:text-8xl">Schedule</h2>
 
             <div className="stacked-cards-container">
@@ -26,11 +31,16 @@ const Schedule = forwardRef((props, ref) => {
                             <div
                                 className="stacked-card-content"
                                 onClick={() => navigate(`/schedule/${evt.id}`)}
+                                style={evt.image ? { backgroundImage: `url(${evt.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
                             >
-                                <span className="stacked-card-number">0{evt.id}</span>
-                                <h3 className="stacked-card-title">{evt.title}</h3>
-                                <p className="stacked-card-subtitle">{evt.subtitle}</p>
-                                <span className="event-card-cta 5xl">View Schedule →</span>
+                                {!evt.image && (
+                                    <>
+                                        <span className="stacked-card-number">0{evt.id}</span>
+                                        <h3 className="stacked-card-title">{evt.title}</h3>
+                                        <p className="stacked-card-subtitle">{evt.subtitle}</p>
+                                        <span className="event-card-cta 5xl">View Schedule →</span>
+                                    </>
+                                )}
                             </div>
                         </CometCard>
                     </div>
