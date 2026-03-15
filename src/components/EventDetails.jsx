@@ -193,16 +193,20 @@ const EventDetails = () => {
             {id === 'timescape' && (
                 <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
                     <GridScan
+                        sensitivity={0.5}
                         linesColor="transparent"
                         scanColor="#a21caf"
-                        scanOpacity={0.95}
-                        gridScale={0.12}
-                        lineThickness={0}
+                        scanOpacity={0.4}
+                        gridScale={0.1}
+                        lineThickness={1}
                         lineJitter={0}
-                        scanGlow={2.5}
+                        bloomIntensity={0.6}
+                        chromaticAberration={0.02}
+                        noiseIntensity={0.01}
+                        scanGlow={1.0}
                         scanSoftness={4}
                         scanPhaseTaper={0.8}
-                        scanDuration={1.5}
+                        scanDuration={1.0}
                         scanDelay={2.5}
                         enablePost={false}
                         className="w-full h-full"
@@ -245,7 +249,7 @@ const EventDetails = () => {
             {/* Removed large ambient glows */}
 
             {/* Page content */}
-            <div className="relative z-10 grow pt-24 pb-32">
+            <div className="relative z-10 grow pt-24 pb-32 sm:pt-10 sm:pb-16 overflow-y-auto max-h-screen">
                 {/* Back button */}
                 <motion.div
                     className="pt-6 md:pt-8 px-6 md:px-12 lg:px-20"
@@ -269,7 +273,7 @@ const EventDetails = () => {
 
                 {/* Main layout */}
                 <div className="px-6 md:px-12 lg:px-20 mt-8 md:mt-12">
-                    <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start max-w-350 mx-auto">
+                    <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start max-w-350 mx-auto w-full">
                         {/* Mobile poster (top) */}
                         <motion.div
                             className="lg:hidden w-full flex justify-center"
