@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -13,32 +15,25 @@ import SchedulePageNew_2 from './pages/SchedulePageNew_2'
 import SchedulePageNew_3 from './pages/SchedulePageNew_3'
 import EventDetails from './components/EventDetails'
 
+function forceScrollTop() {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}
+
 function HomePage({ scrollToRefs, scrollToSection, isScrolled }) {
   const location = useLocation();
 
   useEffect(() => {
-    const sectionMap = {
-      hero: scrollToRefs.heroRef,
-      about: scrollToRefs.aboutRef,
-      events: scrollToRefs.eventRef,
-      schedule: scrollToRefs.scheduleRef,
-    };
-
-    const targetSection = location.state?.scrollTo;
-    const targetRef = sectionMap[targetSection];
-
-    // Legacy fallback used by older event detail links
-    const shouldScrollToEvents = location.state?.scrollToEvents;
-
-    if ((targetRef && targetRef.current) || (shouldScrollToEvents && scrollToRefs.eventRef.current)) {
+    // If we're returning from an event page, scroll instantly to the events section
+    if (location.state?.scrollToEvents && scrollToRefs.eventRef.current) {
       setTimeout(() => {
-        const refToScroll = targetRef || scrollToRefs.eventRef;
-        refToScroll.current.scrollIntoView({ behavior: 'auto', block: 'start' });
+        scrollToRefs.eventRef.current.scrollIntoView({ behavior: 'auto', block: 'start' });
         // Clear state so it doesn't fire again on re-renders
         window.history.replaceState({}, document.title);
       }, 50);
     }
-  }, [location.state, scrollToRefs]);
+  }, [location.state, scrollToRefs.eventRef]);
 
   return (
     <>
