@@ -1,3 +1,25 @@
+/* Responsive Acunetix 13.0 Hero Heading */
+.acunetix-hero-heading {
+  font-family: 'Audiowide Local', 'Audiowide', Arial, sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 10vw, 7rem);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  white-space: nowrap;
+  padding: 0 1vw;
+}
+
+@media (max-width: 600px) {
+  .acunetix-hero-heading {
+    font-size: clamp(1.1rem, 7vw, 2rem);
+    padding: 0 2vw;
+    line-height: 1.1;
+  }
+}
  /* Glitch effect from CodePen (adapted for React/vanilla CSS) */
 .glitch {
   position: relative;

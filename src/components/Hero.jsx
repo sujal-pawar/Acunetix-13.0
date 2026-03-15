@@ -1,5 +1,6 @@
 import React, { forwardRef, useState, useEffect } from 'react';
 import shibuyaCrossing from '../assets/shibuya crossing_2.png';
+import heroVideo from '../assets/Hero.mp4';
 
 const TARGET_DATE = new Date('2026-03-07T00:00:00+05:30').getTime();
 
@@ -33,36 +34,34 @@ const Hero = forwardRef((props, ref) => {
       className="min-h-screen w-full bg-cover bg-center bg-no-repeat relative"
       style={{ backgroundImage: `url(${shibuyaCrossing})` }}
     >
-      {/* Countdown – positioned on the billboard */}
-      <div className="billboard-countdown">
-        <span className="billboard-heading">EVENT STARTS IN</span>
-        <span className="billboard-time" key={`t-${timeLeft.seconds}`}>
-          {pad(timeLeft.days)}:{pad(timeLeft.hours)}:{pad(timeLeft.minutes)}:{pad(timeLeft.seconds)}
-        </span>
-      </div>
-
-      {/* Acunetix 13.0 Card with Glitch Effect */}
-      <div className="acunetix-card">
-        <div className="acunetix-card-inner flex justify-center items-center w-full mt-8">
+      {/* Video background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
+        src={heroVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+      {/* Darker semi-transparent overlay */}
+      <div className="absolute inset-0 w-full h-full bg-black/70 z-10 pointer-events-none" />
+        {/* Centered content above video/overlay */}
+        <div className="relative z-20 flex flex-col items-center justify-center min-h-screen w-full text-center">
+          {/* Acunetix 13.0 Heading - extremely large and above timer */}
           <h1
-            className="mx-auto"
-            style={{
-              fontFamily: "'Audiowide Local', 'Audiowide', Arial, sans-serif",
-              fontWeight: 400,
-              fontSize: 'clamp(3rem, 14vw, 10rem)',
-              lineHeight: 1,
-              letterSpacing: '0.03em',
-              whiteSpace: 'nowrap',
-              color: '#fff',
-              textTransform: 'uppercase',
-              textAlign: 'center',
-              position: 'relative',
-            }}
+            className="mx-auto acunetix-hero-heading text-white text-[38vw] md:text-[26vw] lg:text-[18vw] font-[Audiowide,Arial,sans-serif] font-normal tracking-wide mb-20 drop-shadow-lg leading-[0.75] uppercase whitespace-nowrap"
+            style={{ letterSpacing: '0.03em' }}
           >
             Acunetix 13.0
           </h1>
+          {/* Countdown – centered below heading */}
+          <div className="mb-8">
+            <span className="block text-lg md:text-2xl font-semibold text-white/80 tracking-widest mb-2">EVENT STARTS IN</span>
+            <span className="block text-3xl md:text-5xl font-mono font-bold text-white bg-black/40 rounded-lg px-6 py-2 shadow-lg mt-12" key={`t-${timeLeft.seconds}`}>
+              {pad(timeLeft.days)}:{pad(timeLeft.hours)}:{pad(timeLeft.minutes)}:{pad(timeLeft.seconds)}
+            </span>
+          </div>
         </div>
-      </div>
     </section>
   );
 });
