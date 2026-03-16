@@ -44,18 +44,16 @@ const Hero = forwardRef((props, ref) => {
         playsInline
       />
       {/* Darker semi-transparent overlay */}
-      <div className="absolute inset-0 w-full h-full bg-black/70 z-10 pointer-events-none" />
+      <div className="absolute inset-0 w-full h-full bg-black/40 z-10 pointer-events-none" />
         {/* Centered content above video/overlay */}
-        <div className="relative z-20 flex flex-col items-center justify-center min-h-screen w-full text-center">
-          {/* Acunetix 13.0 Heading - extremely large and above timer */}
+        <div className="absolute inset-0 min-h-screen flex flex-col items-center justify-center text-center z-20">
           <h1
-            className="mx-auto acunetix-hero-heading text-white text-[38vw] md:text-[26vw] lg:text-[18vw] font-[Audiowide,Arial,sans-serif] font-normal tracking-wide mb-20 drop-shadow-lg leading-[0.75] uppercase whitespace-nowrap"
+            className="mx-auto acunetix-hero-heading text-white text-[44vw] md:text-[30vw] lg:text-[20vw] font-[Audiowide,Arial,sans-serif] font-normal tracking-wide drop-shadow-lg leading-[0.7] uppercase whitespace-nowrap"
             style={{ letterSpacing: '0.03em' }}
           >
-            Acunetix 13.0
+            ACUNETIX 13.0
           </h1>
-          {/* Countdown – centered below heading */}
-          <div className="mb-8">
+          <div className="mt-24">
             <span className="block text-lg md:text-2xl font-semibold text-white/80 tracking-widest mb-2">EVENT STARTS IN</span>
             <span className="block text-3xl md:text-5xl font-mono font-bold text-white bg-black/40 rounded-lg px-6 py-2 shadow-lg mt-12" key={`t-${timeLeft.seconds}`}>
               {pad(timeLeft.days)}:{pad(timeLeft.hours)}:{pad(timeLeft.minutes)}:{pad(timeLeft.seconds)}
