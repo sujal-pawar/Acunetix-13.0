@@ -28,12 +28,7 @@ const Hero = forwardRef((props, ref) => {
   }, []);
 
   return (
-    <section
-      ref={ref}
-      id="home"
-      className="min-h-screen w-full bg-cover bg-center bg-no-repeat relative"
-      style={{ backgroundImage: `url(${shibuyaCrossing})` }}
-    >
+    
       {/* Video background */}
       <video
         className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
