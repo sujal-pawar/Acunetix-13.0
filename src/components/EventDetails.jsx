@@ -47,8 +47,11 @@ const EventDetails = () => {
     const event = eventsData.find((e) => e.id === eventName);
 
     const handleBack = useCallback(() => {
-        // We use React Router state to tell the HomePage to scroll to the events section after mounting
-        navigate('/', { state: { scrollToEvents: true } });
+        navigate('/');
+        setTimeout(() => {
+            const el = document.getElementById('events');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
     }, [navigate]);
 
     useEffect(() => {

@@ -123,7 +123,10 @@ EventCard.displayName = 'EventCard';
 /* ─── Main Event Section ─── */
 const Event = forwardRef((props, ref) => {
   const scrollRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(Math.floor(eventsData.length / 2));
+  // Find the index of ctrlaltelite, default to middle if not found
+  const initialIndex = eventsData.findIndex(e => e.id === 'ctrlaltelite');
+  const startIndex = initialIndex !== -1 ? initialIndex : Math.floor(eventsData.length / 2);
+  const [activeIndex, setActiveIndex] = useState(startIndex);
 
   const scrollToCard = useCallback((index) => {
     const container = scrollRef.current;
@@ -193,9 +196,9 @@ const Event = forwardRef((props, ref) => {
 
       {/* Header */}
       <div className="relative z-10 text-center mb-12 md:mb-16 px-4">
-        <p className="text-[10px] md:text-xs font-semibold tracking-[0.4em] text-white/30 uppercase mb-4">
+        {/* <p className="text-[10px] md:text-xs font-semibold tracking-[0.4em] text-white/30 uppercase mb-4">
           Acunetix Presents
-        </p>
+        </p> */}
         <h2
           className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-wider"
         >

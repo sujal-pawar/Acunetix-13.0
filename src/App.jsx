@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import ScrollToTop from './components/ScrollToTop'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -32,7 +32,7 @@ function HomePage({ scrollToRefs, scrollToSection, isScrolled }) {
         scrollToRefs.eventRef.current.scrollIntoView({ behavior: 'auto', block: 'start' });
         // Clear state so it doesn't fire again on re-renders
         window.history.replaceState({}, document.title);
-      }, 600);
+      }, 50);
     }
   }, [location.state, scrollToRefs.eventRef]);
 
@@ -45,13 +45,7 @@ function HomePage({ scrollToRefs, scrollToSection, isScrolled }) {
         transition={{ duration: 0.5 }}
         className="fixed inset-0 bg-black z-[9999] pointer-events-none"
       />
-      <motion.div 
-        className="flex flex-col min-h-screen"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="flex flex-col min-h-screen">
         <Navbar
           scrollToRefs={scrollToRefs}
           scrollToSection={scrollToSection}
@@ -71,7 +65,7 @@ function HomePage({ scrollToRefs, scrollToSection, isScrolled }) {
           scrollToRefs={scrollToRefs}
           scrollToSection={scrollToSection}
         />
-      </motion.div>
+      </div>
     </>
   )
 }
@@ -111,24 +105,22 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col bg-black text-white">
       <ScrollToTop />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                scrollToRefs={scrollToRefs}
-                scrollToSection={scrollToSection}
-                isScrolled={isScrolled}
-              />
-            }
-          />
-          <Route path="/schedule/1" element={<SchedulePageNew_1 />} />
-          <Route path="/schedule/2" element={<SchedulePageNew_2 />} />
-          <Route path="/schedule/3" element={<SchedulePageNew_3 />} />
-          <Route path="/events/:eventName" element={<EventDetails />} />
-        </Routes>
-      </AnimatePresence>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              scrollToRefs={scrollToRefs}
+              scrollToSection={scrollToSection}
+              isScrolled={isScrolled}
+            />
+          }
+        />
+        <Route path="/schedule/1" element={<SchedulePageNew_1 />} />
+        <Route path="/schedule/2" element={<SchedulePageNew_2 />} />
+        <Route path="/schedule/3" element={<SchedulePageNew_3 />} />
+        <Route path="/events/:eventName" element={<EventDetails />} />
+      </Routes>
       <Chatbot />
     </div>
   )
