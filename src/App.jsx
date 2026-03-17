@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import ScrollToTop from './components/ScrollToTop'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -103,7 +103,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-black text-white">
       <ScrollToTop />
       <Routes>
         <Route
