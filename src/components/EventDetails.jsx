@@ -460,13 +460,13 @@ const EventDetails = () => {
                         }}
                     >
                         <p
-                            className="text-xl md:text-3xl font-black uppercase mb-5 tracking-[0.22em]"
+                            className="text-2xl md:text-4xl font-black uppercase mb-6 tracking-[0.24em]"
                             style={{ color: theme.primary }}
                         >
                             Instructions
                         </p>
 
-                        <ol className="list-decimal pl-6 space-y-4 text-white text-xl md:text-2xl leading-relaxed md:leading-10 font-extrabold">
+                        <ol className="list-decimal pl-7 space-y-5 text-white text-2xl md:text-3xl leading-10 md:leading-[3.2rem] font-black">
                             <li>Please ensure that all the details provided in the form are accurate and complete.</li>
                             <li>The payment made must match the event you have registered for; incorrect selections or payments will not be accepted or refunded.</li>
                             <li>Further details and updates regarding the event will be communicated via email.</li>
