@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Timeline } from '@/components/timeline';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ShapeGrid from '@/components/ShapeGrid';
 
 function ScheduleDayPage({ dayLabel, scheduleEvents }) {
   const navigate = useNavigate();
@@ -20,10 +21,23 @@ function ScheduleDayPage({ dayLabel, scheduleEvents }) {
   }));
 
   return (
-    <div className="flex flex-col min-h-screen bg-black">
+    <div className="flex flex-col min-h-screen bg-black relative">
+      {/* ShapeGrid Background */}
+      <div className="fixed inset-0 w-full h-full z-0 pointer-events-none">
+        <ShapeGrid
+          direction="diagonal"
+          speed={0.3}
+          borderColor="#5aeea430"
+          squareSize={44}
+          hoverFillColor="#2f967c"
+          shape="square"
+          hoverTrailAmount={4}
+        />
+      </div>
+
       <Navbar scrollToRefs={{}} isScrolled={true} />
 
-      <div className="grow relative flex flex-col items-center pt-24 pb-12">
+      <div className="grow relative flex flex-col items-center pt-24 pb-12" style={{ zIndex: 1 }}>
         <button
           className="fixed left-8 top-28 border border-white/15 text-white px-4 py-2 rounded-lg text-sm hover:border-[#00ffc8]/50 hover:text-[#00ffc8]/90 transition-all z-10"
           onClick={() => navigate('/#schedule')}
